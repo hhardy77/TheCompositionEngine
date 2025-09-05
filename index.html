@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Composition Engine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="home">
+  <div class="top-band"></div>
+  <div class="container">
+    <header class="site-header">
+      <h1>The Composition Engine</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="genres.html">Genres</a>
+        <a href="authors.html">Authors</a>
+        <a href="tags.html">Tags</a>
+        <a href="regions.html">Regions</a>
+      </nav>
+    </header>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search by title, author, genre, tag, or region">
+      <div class="button-row">
+        <button id="searchButton">Search</button>
+        <button id="clearButton">Clear</button>
+      </div>
+    </div>
+
+    <main id="results" class="main-content"></main>
+  </div>
+
+  <img src="logo.png" alt="The Composition Engine Logo" class="rotating-logo">
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

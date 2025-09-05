@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "checkJs": true,
+    "allowJs": true,
+    "module": "esnext",
+    "moduleResolution": "classic",
+    "target": "es2020"
+  },
+  "include": ["**/*.js", "types.d.ts"]
+}
