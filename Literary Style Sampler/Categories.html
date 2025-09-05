@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Browse – Literary Style Sampler</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Page-specific polish (kept minimal) */
+    .browse-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 16px;
+    }
+    .browse-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .browse-card h2 {
+      margin: 0 0 10px 0;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+    .link-list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .link-list a {
+      display: inline-block; padding: 6px 10px; border-radius: 999px;
+      background: #ecf0f1; text-decoration: none; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .link-list a:hover { background: #e3e8eb; }
+    .alpha { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; }
+    .alpha a { font-weight: 700; text-decoration: none; padding: 2px 6px; border-radius: 6px; }
+    .alpha a:hover { background: #f0f3f5; }
+    .muted { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div class="top-band"></div>
+<div class="container">
+  <!-- your site header + content -->
+</div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="site-header">
+      <h1>📚 Browse Library</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="categories.html">Browse</a>
+      </nav>
+    </header>
+
+    <div class="browse-grid">
+      <!-- Genres (anchor target) -->
+      <section class="browse-card" id="genres">
+        <h2>Genres</h2>
+        <ul id="genreList" class="link-list"></ul>
+      </section>
+
+      <!-- Authors (anchor target) -->
+      <section class="browse-card" id="authors">
+        <h2>Authors</h2>
+        <div class="alpha" id="authorAlpha"></div>
+        <ul id="authorList" class="link-list" style="margin-top:8px;"></ul>
+        <div class="muted">Tip: click a letter to jump.</div>
+      </section>
+
+      <!-- Tags (anchor target) -->
+      <section class="browse-card" id="tags">
+        <h2>Tags</h2>
+        <ul id="tagList" class="link-list"></ul>
+      </section>
+
+      <!-- Popular Combos -->
+      <section class="browse-card" id="combos">
+        <h2>Popular Combos</h2>
+        <ul id="comboList" class="link-list"></ul>
+        <div class="muted">These link to multi-filter searches (AND logic).</div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Scripts (order matters) -->
+  <script src="data.js"></script>
+  <script src="categories.js"></script>
+  <img src="logo.png" alt="The Composition Engine Logo" class="rotating-logo">
+
+    <!-- Rotating logo (bottom right corner) -->
+  <img src="logo.png" alt="The Composition Engine Logo" class="rotating-logo">
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

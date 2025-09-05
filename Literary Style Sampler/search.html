@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Composition Engine — Search</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="top-band"></div>
+  <div class="container">
+    <header class="site-header">
+      <h1>The Composition Engine</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="genres.html">Genres</a>
+        <a href="authors.html">Authors</a>
+        <a href="tags.html">Tags</a>
+        <a href="regions.html">Regions</a>
+      </nav>
+    </header>
+
+    <h2 id="searchHeading">Search Results</h2>
+    <div id="excerptList"></div>
+  </div>
+
+  <script type="module">
+    import { EXCERPTS } from "./data.js";
+
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("query")?.toLowerCase();
+    const heading = document.getElementById("searchHeading");
+    const listEl = document.getElementById("excerptList");
+
+    if (query) {
+      heading.textContent = `Search Results for: "${query}"`;
+
+      const results = EXCERPTS.filter(item =>
+        item.author.toLowerCase().includes(query) ||
+        item.text.toLowerCase().includes(query) ||
+        (item.genres || []).some(g => g.toLowerCase().includes(query)) ||
+        (item.tags || []).some(t => t.toLowerCase().includes(query)) ||
+        (item.region || "").toLowerCase().includes(query)
+      );
+
+      listEl.innerHTML = results.length
+        ? results.map(item => `
+          <div class="excerpt">
+            <h2>${item.author}</h2>
+            <p>${item.text}</p>
+            <div class="tags">
+              ${(item.tags || [])
+                .map(t => `<a href="tags.html?tag=${encodeURIComponent(t)}" class="tag">${t}</a>`)
+                .join("")}
+            </div>
+          </div>
+        `).join("")
+        : `<p class="muted">No results found for “${query}”.</p>`;
+    } else {
+      heading.textContent = "Search";
+      listEl.innerHTML = "<p class='muted'>No search term provided.</p>";
+    }
+  </script>
+    <!-- Rotating logo (bottom right corner) -->
+  <img src="logo.png" alt="The Composition Engine Logo" class="rotating-logo">
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
